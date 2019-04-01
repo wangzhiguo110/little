@@ -96,66 +96,7 @@ Route::middleware(['admin_auth','permission_auth'])->prefix('admin')->group(func
 
 
 
-    /*#############################[小说相关]#############################*/
-
-    //  作者列表
-    Route::get('author/list','Admin\AuthorController@list')->name('admin.author.list');
-    //  作者添加
-    Route::get('author/create','Admin\AuthorController@create')->name('admin.author.create');
-    //  执行作者添加
-    Route::post('author/store','Admin\AuthorController@store')->name('admin.author.store');
-    //  执行作者删除
-    Route::get('author/del/{id}','Admin\AuthorController@del')->name('admin.author.del');
-
-
-    //  分类列表
-    Route::get('category/list','Admin\CategoryController@list')->name('admin.category.list');
-    //  分类添加
-    Route::get('category/create','Admin\CategoryController@create')->name('admin.category.create');
-    //  执行分类添加
-    Route::post('category/store','Admin\CategoryController@store')->name('admin.category.store');
-    //  分类删除
-    Route::get('category/del/{id}','Admin\CategoryController@del')->name('admin.category.del');
-
-
-    //  小说列表
-    Route::get('novel/list','Admin\NovelController@list')->name('admin.novel.list');
-    //  小说添加
-    Route::get('novel/create','Admin\NovelController@create')->name('admin.novel.create');
-    //  执行小说添加
-    Route::post('novel/store','Admin\NovelController@store')->name('admin.novel.store');
-    //  小说删除
-    Route::get('novel/del/{id}','Admin\NovelController@del')->name('admin.novel.del');
-    //  小说编辑
-    Route::get('novel/edit/{id}','Admin\NovelController@edit')->name('admin.novel.edit');
-    //  执行小说编辑
-    Route::post('novel/doEdit','Admin\NovelController@doEdit')->name('admin.novel.doEdit');
-
-
-    //  小说章节列表
-    Route::get('chapter/list/{novel_id?}','Admin\ChapterController@list')->name('admin.chapter.list');
-    //  小说章节添加    给哪个小说添加  小说id
-    Route::get('chapter/add/{novel_id}','Admin\ChapterController@create')->name('admin.chapter.create');
-    //  保存小说章节
-    Route::post('chapter/store','Admin\ChapterController@store')->name('admin.chapter.store');
-    //  删除小说章节
-    Route::get('chapter/del/{id}','Admin\ChapterController@del')->name('admin.chapter.del');
-    //  编辑小说章节列表
-    Route::get('chapter/edit/{id?}','Admin\ChapterController@edit')->name('admin.chapter.edit');
-    //  执行编辑小说章节列表
-    Route::post('chapter/doEdit','Admin\ChapterController@doEdit')->name('admin.chapter.doEdit');
-
-
-    //  小说评论列表
-    Route::get('novel/comment/list','Admin\CommentController@list')->name('admin.novel.comment.list');
-    //  小说数据
-    Route::get('novel/comment/data','Admin\CommentController@getComment')->name('admin.novel.comment.data');
-    //  小说评论审核
-    Route::get('novel/comment/check/{id}','Admin\CommentController@check')->name('admin.novel.comment.check');
-    //  小说评论删除
-    Route::get('novel/comment/del/{id}','Admin\CommentController@del')->name('admin.novel.comment.del');
-
-    /*#############################[小说相关]#############################*/
+  
 
 
 });
