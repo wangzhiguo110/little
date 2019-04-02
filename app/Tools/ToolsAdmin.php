@@ -48,6 +48,30 @@ class ToolsAdmin
         return $menus;
     }
 
+    // 创建无限极分类数结构
+
+    public static function buildTreeString($data,$fid=0,$level=0,$fKey='fid')
+    {
+        if(empty($data)){
+            return [];
+        }
+
+        static $tree=[];
+
+        foreach ($data as $key => $value) {
+            // 判断当前的父类id是否递归调用穿过来的id
+            if($value[$fkey]==$fid){
+                $value['level']=$level;
+                $tree[]=$value;
+
+                unset($data[$key]);
+
+                self::buildTreeString($data,$value['id'],$level+1,$fKey);
+            }
+        }
+        return $tree;
+    }
+
     /**
      * 文件上传函数
      * @param $files $object

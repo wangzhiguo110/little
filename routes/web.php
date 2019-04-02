@@ -94,9 +94,75 @@ Route::middleware(['admin_auth','permission_auth'])->prefix('admin')->group(func
     /*#############################[角色相关]#############################*/
 
 
+    /*#############################[商品品牌相关]#############################*/
+    Route::get('brand/list','Admin\BrandController@list')->name('admin.brand.list');//商品品牌列表
+    Route::post('brand/data/list','Admin\BrandController@getListData')->name('admin.brand.data.list');//品牌列表数据
 
 
-  
+     Route::get('brand/add','Admin\BrandController@add')->name('admin.brand.add');//品牌添加页面
+     Route::post('brand/doAdd','Admin\BrandController@doAdd')->name('admin.brand.doAdd');//执行商品品牌添加
+     Route::get('brand/edit/{id}','Admin\BrandController@edit')->name('admin.brand.edit');//品牌修改页面
+     Route::post('brand/doEdit','Admin\BrandController@doEdit')->name('admin.brand.doEdit');//执行商品品牌修改
+     Route::get('brand/del/{id}','Admin\BrandController@del')->name('admin.brand.del');//执行删除的操作
+
+
+     Route::post('brand/change/attr','Admin\BrandController@changeAttr')->name('admin.brand.change.attr');//修改品牌的属性值
+
+     /*#############################[商品品牌相关]#############################*/
+     /*#############################[商品分类相关]#############################*/
+    // 商品分类列表页面
+     Route::get('category/list','Admin\CategoryController@list')->name('admin.category.list');
+     Route::get('category/get/data/{fid?}','Admin\CategoryController@getListData')->name('admin.category.get.data');
+      //商品添加页面
+     Route::get('category/add','Admin\CategoryController@add')->name('admin.category.add');
+     //商品执行添加操作
+     Route::post('category/doAdd','Admin\CategoryController@doAdd')->name('admin.category.doAdd');
+     //商品编辑页面
+     Route::get('category/edit/{id}','Admin\CategoryController@edit')->name('admin.category.edit');
+     //商品执行编辑操作
+     Route::post('category/doEdit','Admin\CategoryController@doEdit')->name('admin.category.doEdit');
+     //商品执行删除操作
+     Route::get('category/del/{id}','Admin\CategoryController@del')->name('admin.category.del');
+     /*#############################[商品分类相关]#############################*/
+
+      /*#############################[文章分类相关]#############################*/
+      // 文章分类列表
+      Route::get('article/category/list','Admin\ArticleCategoryController@list')->name('admin.article.category.list');
+      // 文章分类添加
+      Route::get('article/category/add','Admin\ArticleCategoryController@add')->name('admin.article.category.add');
+      // 文章执行分类添加
+      Route::post('article/category/store','Admin\ArticleCategoryController@store')->name('admin.article.category.store');
+      // 文章分类编辑
+      Route::get('article/category/edit/{id}','Admin\ArticleCategoryController@edit')->name('admin.article.category.edit');
+      // 文章执行分类编辑
+      Route::post('article/category/save','Admin\ArticleCategoryController@doEdit')->name('admin.article.category.save');
+      // 文章分类删除
+      Route::get('article/category/del/{id}','Admin\ArticleCategoryController@del')->name('admin.article.category.del');
+       /*#############################[文章分类相关]#############################*/
+
+
+       /*#############################[文章相关]#############################*/
+       // 文章列表
+      Route::get('article/list','Admin\ArticleController@list')->name('admin.article.list');
+      // 文章添加
+      Route::get('article/add','Admin\ArticleController@add')->name('admin.article.add');
+      // 文章执行添加
+      Route::post('article/store','Admin\ArticleController@store')->name('admin.article.store');
+       // 文章编辑
+      Route::get('article/edit/{id}','Admin\ArticleController@edit')->name('admin.article.edit');
+      // 文章执行编辑
+      Route::post('article/save','Admin\ArticleController@doEdit')->name('admin.article.save');
+      // 文章删除
+      Route::get('article/del/{id}','Admin\ArticleController@del')->name('admin.article.del');
+       /*#############################[文章相关]#############################*/
+       /*#############################[广告位相关]#############################*/
+
+       
+       /*#############################[广告位相关]#############################*/
+
+
+
+    
 
 
 });
