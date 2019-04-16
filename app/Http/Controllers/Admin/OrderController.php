@@ -49,7 +49,7 @@ class OrderController extends Controller
     	$data = $this->getDataList($order);
     	//导出的数据
         $exportData = [];
-        $head = ['order_sn','goods_price','user_id','consignee','phone','shipping_name','pay_name'];//excel的head头
+        $head = ['order_sn','good_price','user_id','consignee','phone','shipping_name','pay_name'];//excel的head头
         $exportData[] = ['订单号','商品总价','用户id','收货人','收货人手机','配送方式','支付方式'];
         //组装打印的数据
         foreach ($data as $key => $value) {
