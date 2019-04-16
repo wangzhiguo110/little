@@ -60,7 +60,7 @@ class ToolsAdmin
 
         foreach ($data as $key => $value) {
             // 判断当前的父类id是否递归调用穿过来的id
-            if($value[$fkey]==$fid){
+            if($value[$fKey]==$fid){
                 $value['level']=$level;
                 $tree[]=$value;
 
@@ -77,11 +77,17 @@ class ToolsAdmin
      * @param $files $object
      * @return string url
      */
-    public static function uploadFile($files)
+    public static function uploadFile($files,$isOss=true)
     {
         //参数为空
         if(empty($files)){
             return "";
+        }
+        if($isOss){
+            //oss文件上传
+            $oss=new ToolsOss();
+            $url=$oss->putFile($files);
+            return $url;
         }
 
         //文件上传的目录
@@ -142,6 +148,10 @@ class ToolsAdmin
 
 
         return $urls;
+    }
+    //生成货号
+    public  static function buildGoodsSn($string=16){
+        return "JY".date("YmdHis",time());
     }
 
 }
