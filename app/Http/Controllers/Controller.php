@@ -8,7 +8,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     const 
-        PAGE_SIZE = 1,
+        PAGE_SIZE = 10,
         END       = TRUE;
     //删除_token下划线token值
     public function delToken(array $params)
@@ -41,12 +41,18 @@ class Controller extends BaseController
         return $object->insert($params);
     }
     //获取数据的公共方法操作
-    public function getDataInfo($object, $id, $key="id")
+    public function getDataInfo($object, $id, $key="id",$fields= "*")
     {
         if(empty($id)){
             return false;
         }
-        $info = $object->where($key, $id)->first();
+        $info = $object->select($fields)->where($key, $id)->first();
+        return $info;
+    }
+    //通过where条件查询记录
+    public function getDataInfoByWhere($object, $where=[])
+    {
+        $info = $object->where($where)->first();
         return $info;
     }
     //没有分页的数据列表
@@ -67,5 +73,16 @@ class Controller extends BaseController
     public function delData($object, $id,$key="id")
     {
         return $object->where($key,$id)->delete();
+    }
+    /**
+     * @desc 接口返回json的格式数据
+     * @param array $data
+     */
+    public function returnJson($data = [])
+    {
+        if(!headers_sent()){
+            header(sprintf('%s:%s','Content-Type','application/json'));
+        }
+        exit(json_encode($data));
     }
 }

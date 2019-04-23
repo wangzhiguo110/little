@@ -55,9 +55,9 @@ return [
     |
     */
 
-    'from' => [
-        'address' => '15737580246@163.com',
-        'name' => '朱梦阳',
+   'from' => [
+        'address' => env("MAIL_USERNAME", ""),
+        'name' => env("MAIL_FROM_NAME")
     ],
 
     /*
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
     |--------------------------------------------------------------------------

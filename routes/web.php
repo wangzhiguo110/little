@@ -22,7 +22,12 @@ Route::post('admin/doLogin', 'Admin\LoginController@doLogin');
 //  用户退出
 Route::get('admin/logout', 'Admin\LoginController@logout');
 
-
+//忘记密码的页面
+Route::get('admin/forget/password','Admin\LoginController@forget');
+Route::post('admin/forget/sendEmail','Admin\LoginController@sendEmail');
+//重新设置密码
+Route::get('admin/forget/reset','Admin\LoginController@reset');
+Route::post('admin/reset/password/save','Admin\LoginController@save');
 Route::get('403',function(){
     return view('403');
 });
