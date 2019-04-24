@@ -90,7 +90,10 @@ Route::middleware(['admin_auth','permission_auth'])->prefix('admin')->group(func
     Route::get('/role/edit/{id}','Admin\RoleController@edit')->name('admin.role.edit');
     //执行角色编辑
     Route::post('/role/doEdit','Admin\RoleController@doEdit')->name('admin.role.doEdit');
-
+    //修改密码的页面
+    Route::get('/user/password','Admin\AdminUsersController@password')->name('admin.user.password');
+    //执行修改密码
+    Route::post('/user/password/save','Admin\AdminUsersController@updatePwd')->name('admin.user.password.save');
     //角色权限编辑
     Route::get('/role/permission/{id}','Admin\RoleController@rolePermission')->name('admin.role.permission');
     //角色权限执行编辑

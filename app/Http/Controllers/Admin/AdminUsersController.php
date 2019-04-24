@@ -190,7 +190,7 @@ class AdminUsersController extends Controller
         return view('admin.users.password');
     }
     //执行密码修改
-    public function updatePws(Request $request){
+    public function updatePwd(Request $request){
         $params=$request->all();
         //检测旧密码是否正确
         $adminUsers=new AdminUsers();
